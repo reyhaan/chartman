@@ -36,7 +36,6 @@ class LineChart extends React.Component {
 					});
 			
 			var dimensionSet = new Set(this.state.dimension);
-			
 			dimensionSet = [...dimensionSet];
 			
 			for (var i = 0; i < dimensionSet.length; i++) {
