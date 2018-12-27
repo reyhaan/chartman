@@ -2,8 +2,11 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import App from './pages/App'
+
+// add all required css libraries here at the root
 import 'antd/dist/antd.css'
 import './style/override.scss'
+import 'nvd3/build/nv.d3.css'
 
 class Index extends React.Component {
   render() {

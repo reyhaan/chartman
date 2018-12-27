@@ -3,11 +3,12 @@ const jsonHandler = require('../services/jsonService');
 
 app.post('/', (req, res) => {
 	var data = req.body.data;
-	for (var i = 0; i < data.length; i++) {
-		data[i].supplier = data[i].supplier.toUpperCase();
-	}
-// 	res.status('500').send("err");
-	res.send(data);
+	jsonHandler.writeResponse(data).then(response => {
+		res.send(response);
+	})
+	.catch(err => {
+		res.status('500').send(err);
+	});
 });
 
 app.get('/file', (req, res) => {

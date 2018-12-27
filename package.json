@@ -17,6 +17,7 @@
     "antd": "^3.10.9",
     "axios": "^0.18.0",
     "codemirror": "^5.42.2",
+    "d3": "^3.5.17",
     "json-string-formatter": "^1.0.1",
     "nvd3": "^1.8.6",
     "parcel-bundler": "1.9.6",

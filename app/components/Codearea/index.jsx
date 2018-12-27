@@ -43,7 +43,7 @@ class Codearea extends React.Component {
 		var payload = this.state.inputValue === '' ? "{}" : this.state.inputValue;
 		try {
 			payload = JSON.parse(payload);
-				axios.post('http://159.203.11.15/api/products', {
+			axios.post('http://159.203.11.15/api/products', {
 				data: payload
 			})
 			.then((response) => {
@@ -110,7 +110,7 @@ class Codearea extends React.Component {
 								<div style={{ lineHeight: '625px', display: 'block', height: '50px', width: '100%' }}>
 									{ (!this.state.isLoading && !this.state.isError) && <Icon style={{ fontSize: 26 }} type="swap" /> }
 									{ (this.state.isLoading && !this.state.isError) && <Icon style={{ fontSize: 30 }} type="loading" /> }
-									{ (!this.state.isLoading && this.state.isError) && <Icon style={{ fontSize: 30 }} type="exclamation" /> }
+									{ (!this.state.isLoading && this.state.isError) && <Icon style={{ fontSize: 30, color: 'red' }} type="exclamation" /> }
 								</div>
 							</div>
 						</div>
