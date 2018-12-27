@@ -7,6 +7,7 @@ import './style.scss'
 const { Content } = Layout
 const { Meta } = Card
 let lineChart = '';
+const ticks = [];
 
 class LineChart extends React.Component {
 	
@@ -34,11 +35,24 @@ class LineChart extends React.Component {
 							useInteractiveGuideline: true
 					});
 			
+			var dimensionSet = new Set(this.state.dimension);
+			
+			dimensionSet = [...dimensionSet];
+			
+			for (var i = 0; i < dimensionSet.length; i++) {
+				ticks.push(i);
+			}
+			
 			// chart sub-models (ie. xAxis, yAxis, etc) when accessed directly, return themselves, not the parent chart, so need to chain separately
 			lineChart.xAxis
 					.axisLabel(this.state.dimensionLabel)
-					.tickFormat(d3.format(''))
+					.tickValues(ticks)
+					.tickFormat(function(d) {
+						return dimensionSet[d];
+					})
 					.staggerLabels(false);
+			
+			lineChart.xAxis.rotateLabels(-45);
 			
 			lineChart.yAxis
 					.axisLabel(this.state.measureLabel)
@@ -71,8 +85,8 @@ class LineChart extends React.Component {
 				}
 				map[dim] = map[dim] + measure[index];
 			});
-			Object.keys(map).forEach(function(key) {
-				data.push({"label": key, "value": map[key]});
+			Object.keys(map).forEach(function(key, index) {
+				data.push({x: ticks[index], y: map[key]});
 			});
 			return data;
 		}
