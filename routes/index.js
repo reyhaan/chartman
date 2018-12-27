@@ -1,14 +1,15 @@
 const app = module.exports = require('express')();
 var express = require("express");
+var bodyParser = require("body-parser");
 
-app.use(express.static('dist'));
+app.use(function(req, res, next) { 
+	res.header("Access-Control-Allow-Origin", "*"); 
+	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept"); 
+	next(); 
+});
 
-app.use(express.static('app'));
- 
-//make way for some custom css, js and images
-app.use('/css', express.static(__dirname + '/dist/css'));
-app.use('/js', express.static(__dirname + '/dist/js'));
-app.use('/images', express.static(__dirname + '/dist/images'));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
 // default route
 app.get('/', (req, res) => res.send('Hello World!'));

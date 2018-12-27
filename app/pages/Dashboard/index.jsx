@@ -1,11 +1,14 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon, Tabs } from 'antd'
 import { Route, Switch } from 'react-router-dom'
 import './style.scss'
 import logo from '../../assets/shopify-logo.png'
+import LineChart from '../../components/charts/line-chart'
+import Codearea from '../../components/Codearea'
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
+const { TabPane } = Tabs;
 
 class Dashboard extends React.Component {
   render() {
@@ -20,12 +23,20 @@ class Dashboard extends React.Component {
 						<Breadcrumb.Item>List</Breadcrumb.Item>
 						<Breadcrumb.Item>App</Breadcrumb.Item>
 					</Breadcrumb>
-					<div style={{ background: '#fff', padding: 24, height: 760 }}>
-						
+					<div style={{ background: '#fff', padding: 10, paddingTop: 0, height: 760 }}>
+						<Tabs animated={false} defaultActiveKey="1" size="medium">
+							<TabPane tab="Process" key="1">
+								<Codearea />
+							</TabPane>
+							
+							<TabPane tab="Visualize" key="2">
+								<LineChart />
+							</TabPane>
+						</Tabs>
 					</div>
 				</Content>
 				<Footer style={{ textAlign: 'center' }}>
-					Shopify ©2018 Created by Mohammad Rehaan
+					Shopify © 2018
 				</Footer>
 			</Layout>
     )

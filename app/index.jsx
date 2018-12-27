@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import App from './pages/App'
 import 'antd/dist/antd.css'
+import './style/override.scss'
 
 class Index extends React.Component {
   render() {

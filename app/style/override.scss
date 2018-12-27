@@ -1,0 +1,67 @@
+@import './colors.scss';
+.ant-pagination {
+  .ant-pagination-item {
+    a {
+      color: $appBlue;
+    }
+  }
+  :hover {
+    border-color: $appBlue;
+  }
+  .ant-pagination-item-active {
+    border-color: $appBlue;
+  }
+  .ant-pagination-item-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+.ant-btn {
+  background-color: $appBlue;
+  border-color: $appBlue;
+}
+
+.ant-btn:hover,
+.ant-btn:focus {
+  color: $appWhite;
+  background-color: $appBlue;
+  border-color: $appBlue;
+}
+
+.ant-menu.ant-menu-dark .ant-menu-item-selected,
+.ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
+  background-color: transparent;
+}
+
+.ant-tabs-content {
+  height: 100%;
+}
+
+.ant-tabs-vertical.ant-tabs-left>.ant-tabs-content {
+  height: 100%;
+  overflow: auto;
+}
+
+.ant-tabs-tabpane.ant-tabs-tabpane-active {
+  overflow: auto;
+  height: calc(100% - 124px);
+}
+
+.ant-tabs-nav .ant-tabs-tab {
+  height: auto;
+}
+
+.ant-tabs-nav .ant-tabs-tab-active {
+  color: $appBlue;
+	font-weight: normal;
+}
+
+.ant-tabs-ink-bar {
+  background-color: $appBlue;
+}
+
+.ant-tabs-nav .ant-tabs-tab:hover {
+  color: $appBlue;
+}

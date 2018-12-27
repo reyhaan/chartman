@@ -1,7 +1,16 @@
 const app = module.exports = require('express')();
 const jsonHandler = require('../services/jsonService');
 
-app.get('/', (req, res) => {
+app.post('/', (req, res) => {
+	var data = req.body.data;
+	for (var i = 0; i < data.length; i++) {
+		data[i].supplier = data[i].supplier.toUpperCase();
+	}
+// 	res.status('500').send("err");
+	res.send(data);
+});
+
+app.get('/file', (req, res) => {
   jsonHandler.readResponse('response.json').then(response => {
     var parsedResponse = JSON.parse(response);
     
@@ -13,7 +22,7 @@ app.get('/', (req, res) => {
       res.send(parsedResponse);
     })
     .catch(err => {
-      res,status('500').send(err);
+      res.status('500').send(err);
     });
     
   })

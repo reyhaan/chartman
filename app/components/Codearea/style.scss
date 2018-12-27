@@ -1,0 +1,26 @@
+.codearea {
+	.codearea-container {
+		border: 1px solid #eee;
+    padding: 10px;
+    border-radius: 3px;
+    margin: 10px;
+		height: 605px;
+	}
+	
+	.action-button-container {
+		padding: 10px;
+		padding-left: 15px;
+	}
+	
+	.CodeMirror {
+		border: 1px solid #eee;
+		height: 585px;
+	}
+	
+	.status-container {
+		height: 625px;
+		width: 100%;
+		text-align: center;
+	}
+	
+}
