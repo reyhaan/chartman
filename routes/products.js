@@ -27,3 +27,12 @@ app.get('/file', (req, res) => {
     res.status('500').send(err);
   });
 });
+
+app.get('/output', (req, res) => {
+  fileHandler.readResponse('output.json').then(response => {
+     res.send(response);
+  })
+  .catch(err => {
+    res.status('500').send(err);
+  });
+});

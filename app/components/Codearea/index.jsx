@@ -37,6 +37,33 @@ class Codearea extends React.Component {
 			content: message,
 		});
 	}
+	
+	handleError(error) {
+		if (error.code === "ECONNABORTED") {
+			this.error("Request timed out!");
+		} else {
+			error = error.message;
+			this.setState({
+				outputValue: "Oops! Something went wrong...",
+				isError: true,
+				error
+			})
+			this.error(error);
+		}
+	}
+	
+	printOutput() {
+		axios.get('http://159.203.11.15/api/products/output')
+			.then((response) => {
+				console.log(response);
+				this.setState({
+					outputValue: format(JSON.stringify(response.data))
+				});
+			})
+			.catch((error) => {
+				this.handleError(error)
+			});
+	}
 
 	process() {
 		this.setState({isLoading: true});
@@ -58,17 +85,7 @@ class Codearea extends React.Component {
 				})
 			})
 			.catch((error) => {
-				if (error.code === "ECONNABORTED") {
-					this.error("Request timed out!");
-				} else {
-					error = JSON.stringify(error.response.data);
-					this.setState({
-						outputValue: "Oops! Something went wrong...",
-						isError: true,
-						error
-					})
-					this.error(error);
-				}
+				this.handleError(error);
 			})
 			.then(() => {
 				setTimeout(() => {
@@ -118,7 +135,7 @@ class Codearea extends React.Component {
 							<div className="status-container">
 								<div style={{ lineHeight: '625px', display: 'block', height: '50px', width: '100%' }}>
 									{ (!this.state.isLoading && !this.state.isError) && <Icon style={{ fontSize: 26 }} type="swap" /> }
-									{ (this.state.isLoading && !this.state.isError) && <Icon style={{ fontSize: 30 }} type="loading" /> }
+									{ (this.state.isLoading && !this.state.isError) && <Icon style={{ fontSize: 30 }} spin type="loading-3-quarters" /> }
 									{ (!this.state.isLoading && this.state.isError) && <Icon style={{ fontSize: 30, color: 'red' }} type="exclamation" /> }
 								</div>
 							</div>
@@ -141,6 +158,7 @@ class Codearea extends React.Component {
 				</Row>
 				<Row className="action-button-container">
 					<Button type="primary" size="large" onClick={() => {this.process()}}>Process</Button>
+					<Button style={{ marginLeft: 10 }} type="primary" size="large" onClick={() => {this.printOutput()}}>Output</Button>
 				</Row>
 			</div>
 		)
