@@ -43,8 +43,13 @@ class Codearea extends React.Component {
 		var payload = this.state.inputValue === '' ? "{}" : this.state.inputValue;
 		try {
 			payload = JSON.parse(payload);
-			axios.post('http://159.203.11.15/api/products', {
-				data: payload
+			axios({
+				method: 'post',
+				url: 'http://159.203.11.15/api/products',
+				timeout: 1000 * 10,
+				data: {
+					data: payload
+				}
 			})
 			.then((response) => {
 				this.setState({isError: false});
@@ -53,13 +58,17 @@ class Codearea extends React.Component {
 				})
 			})
 			.catch((error) => {
-				error = JSON.stringify(error.response.data);
-				this.setState({
-					outputValue: "Oops! Something went wrong...",
-					isError: true,
-					error
-				})
-				this.error(error);
+				if (error.code === "ECONNABORTED") {
+					this.error("Request timed out!");
+				} else {
+					error = JSON.stringify(error.response.data);
+					this.setState({
+						outputValue: "Oops! Something went wrong...",
+						isError: true,
+						error
+					})
+					this.error(error);
+				}
 			})
 			.then(() => {
 				setTimeout(() => {

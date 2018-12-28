@@ -94,9 +94,9 @@ class LineChart extends React.Component {
 	chartDataCreator() {
 		return [
 				{
-						values: this.dataAggregator(this.state.dimension, this.state.measure, 'sum'),
-						key: "Product Price vs Category",
-						color: "#5c6ac4",
+					values: this.dataAggregator(this.state.dimension, this.state.measure, 'sum'),
+					key: "Quantity vs Category",
+					color: "#5c6ac4",
 				}
 		];
 	}

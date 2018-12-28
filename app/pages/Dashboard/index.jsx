@@ -20,13 +20,15 @@ class Dashboard extends React.Component {
 			lineChartData: {
 				dimension: [],
 				measure: [],
-				name: '',
+				dimensionLabel: '',
+				measureLabel: '',
 				aggr: 'sum'
 			},
 			barChartData: {
 				dimension: [],
 				measure: [],
-				name: '',
+				dimensionLabel: '',
+				measureLabel: '',
 				aggr: 'sum'
 			}
 		}
@@ -93,7 +95,7 @@ class Dashboard extends React.Component {
 						<Breadcrumb.Item>Mohammad Rehaan</Breadcrumb.Item>
 						<Breadcrumb.Item>Demo App</Breadcrumb.Item>
 					</Breadcrumb>
-					<div style={{ background: '#fff', padding: 10, paddingTop: 0, height: 760 }}>
+					<div className="dashboard-container">
 						<Tabs animated={false} defaultActiveKey="1" size="medium">
 							<TabPane tab="Process" key="1">
 								<Codearea />
