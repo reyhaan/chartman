@@ -4,8 +4,7 @@ import axios from 'axios'
 import { Route, Switch } from 'react-router-dom'
 import './style.scss'
 import logo from '../../assets/shopify-logo.png'
-import LineChart from '../../components/charts/line-chart'
-import BarChart from '../../components/charts/bar-chart'
+import Chartman from '../../components/Chartman'
 import Codearea from '../../components/Codearea'
 
 const { SubMenu } = Menu;
@@ -102,8 +101,8 @@ class Dashboard extends React.Component {
 							</TabPane>
 							
 							<TabPane tab="Visualize" key="2">
-								<LineChart data={this.state.lineChartData} />
-								<BarChart data={this.state.barChartData} />
+								<Chartman type="lineChart" data={this.state.lineChartData} />
+								<Chartman type="barChart" data={this.state.barChartData} />
 							</TabPane>
 						</Tabs>
 					</div>
