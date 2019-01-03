@@ -1,4 +1,6 @@
-const app = require('./routes');
+const server = require('./routes');
 const port = 80
 
-app.listen(port, () => console.log(`Shopify app listening on port ${port}!`));
+server.listen(port, () => console.log(`Shopify app listening on port ${port}!`));
+
+module.exports = server

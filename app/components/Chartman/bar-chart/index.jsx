@@ -22,6 +22,7 @@ const BarChartObject = {
 		barChart.xAxis.rotateLabels(-45);
 		
 		barChart.yAxis
+			.axisLabel(props.measureLabel)
 			.tickFormat(function(d) {
 					if (d == null) {
 							return 'N/A';

@@ -1,6 +1,6 @@
-const app = module.exports = require('express')();
-var express = require("express");
-var bodyParser = require("body-parser");
+let express = require("express");
+const app = express();
+let bodyParser = require("body-parser");
 
 app.use(function(req, res, next) { 
 	res.header("Access-Control-Allow-Origin", "*"); 
@@ -21,4 +21,6 @@ app.use('/api/list', require('./products'));
 // all other routes
 app.all('*', (req, res) => {
   res.status(404).send("Not found bro!");
-})
+});
+
+module.exports = app;

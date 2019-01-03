@@ -109,7 +109,7 @@ class Dashboard extends React.Component {
 					</div>
 				</Content>
 				<Footer style={{ textAlign: 'center' }}>
-					Shopify © 2018
+					Shopify © 2019
 				</Footer>
 			</Layout>
     )

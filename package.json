@@ -16,6 +16,7 @@
   "dependencies": {
     "antd": "^3.10.9",
     "axios": "^0.18.0",
+    "chai-http": "^4.2.1",
     "codemirror": "^5.42.2",
     "d3": "^3.5.17",
     "json-string-formatter": "^1.0.1",
