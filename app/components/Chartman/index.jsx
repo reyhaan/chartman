@@ -17,7 +17,7 @@ class Chartman extends React.Component {
 	}
 	
 	componentDidMount() {
-		ChartFactory(this.props.type).createChart(this.state.chartID, this.props.data);
+		ChartFactory(this.props.type).createChart(this.state.chartID, this.props.props);
 	}
 	
   render() {
@@ -31,7 +31,7 @@ class Chartman extends React.Component {
 
 Chartman.propTypes = {
 	type: PropTypes.string,
-	data: PropTypes.shape({
+	props: PropTypes.shape({
 		dimension: PropTypes.array,
 		measure: PropTypes.array,
 		aggr: PropTypes.string,
@@ -42,7 +42,7 @@ Chartman.propTypes = {
 
 Chartman.defaultProps = {
 	type: '',
-	data: {
+	props: {
 		dimension: [],
 		measure: [],
 		aggr: '',

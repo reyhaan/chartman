@@ -5,7 +5,7 @@ const utils = require('../services/utils');
 app.post('/', (req, res) => {
 	var data = req.body.data;
 	data = utils.process(data);
-	fileHandler.writeResponse(data).then(response => {
+	fileHandler.writeFile(data).then(response => {
 		res.send(response);
 	})
 	.catch(err => {
@@ -14,9 +14,9 @@ app.post('/', (req, res) => {
 });
 
 app.get('/file', (req, res) => {
-  fileHandler.readResponse('response.json').then(response => {
+  fileHandler.readFile('response.json').then(response => {
     var parsedResponse = JSON.parse(response);
-    fileHandler.writeResponse(parsedResponse).then(response => {
+    fileHandler.writeFile(parsedResponse).then(response => {
       res.send(parsedResponse);
     })
     .catch(err => {
@@ -29,7 +29,7 @@ app.get('/file', (req, res) => {
 });
 
 app.get('/output', (req, res) => {
-  fileHandler.readResponse('output.json').then(response => {
+  fileHandler.readFile('output.json').then(response => {
      res.send(response);
   })
   .catch(err => {

@@ -36,10 +36,10 @@ const LineChartObject = {
 	createChart: function(chartID, props) {
 		nv.addGraph(() => {
 			var lineChart = nv.models.lineChart()
-					.options({
-							duration: 300,
-							useInteractiveGuideline: true
-					});
+				.options({
+						duration: 300,
+						useInteractiveGuideline: true
+				});
 			
 			var dimensionSet = new Set(props.dimension);
 			dimensionSet = [...dimensionSet];
@@ -49,23 +49,23 @@ const LineChartObject = {
 			}
 			
 			lineChart.xAxis
-					.axisLabel(props.dimensionLabel)
-					.tickValues(this.ticks)
-					.tickFormat(function(d) {
-						return dimensionSet[d];
-					})
-					.staggerLabels(false);
+				.axisLabel(props.dimensionLabel)
+				.tickValues(this.ticks)
+				.tickFormat(function(d) {
+					return dimensionSet[d];
+				})
+				.staggerLabels(false);
 			
 			lineChart.xAxis.rotateLabels(-45);
 			
 			lineChart.yAxis
-					.axisLabel(props.measureLabel)
-					.tickFormat(function(d) {
-							if (d == null) {
-									return 'N/A';
-							}
-							return d3.format('')(d);
-					});
+				.axisLabel(props.measureLabel)
+				.tickFormat(function(d) {
+						if (d == null) {
+								return 'N/A';
+						}
+						return d3.format('')(d);
+				});
 
 			d3.select(`#${chartID}`).append('svg')
 				.datum(this.getData(props))

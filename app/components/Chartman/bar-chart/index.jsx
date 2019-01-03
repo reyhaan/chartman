@@ -20,10 +20,23 @@ const BarChartObject = {
 		barChart.color(['#5c6ac4']);
 		
 		barChart.xAxis.rotateLabels(-45);
+		
+		barChart.yAxis
+			.tickFormat(function(d) {
+					if (d == null) {
+							return 'N/A';
+					}
+					return d3.format('')(d);
+			});
 
 		d3.select(`#${chartID}`).append('svg')
 			.datum(this.getData(props))
 			.call(barChart);
+		
+		d3.selectAll("rect.nv-bar")
+			.style("fill-opacity", function (d, i) {
+				return 1;
+			});
 
 		nv.utils.windowResize(barChart.update);
 

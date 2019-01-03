@@ -88,6 +88,7 @@ class Dashboard extends React.Component {
 			<Layout className="layout dashboard">
 				<Header>
 					<img className="logo" src={logo} alt="" />
+					<p className="logo-sub-brand">tryouts</p>
 				</Header>
 				<Content style={{ padding: '0 50px' }}>
 					<Breadcrumb style={{ margin: '16px 0' }}>
@@ -101,8 +102,8 @@ class Dashboard extends React.Component {
 							</TabPane>
 							
 							<TabPane tab="Visualize" key="2">
-								<Chartman type="lineChart" data={this.state.lineChartData} />
-								<Chartman type="barChart" data={this.state.barChartData} />
+								<Chartman type="lineChart" props={this.state.lineChartData} />
+								<Chartman type="barChart" props={this.state.barChartData} />
 							</TabPane>
 						</Tabs>
 					</div>
