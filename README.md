@@ -10,3 +10,4 @@ The setup is using `Parcel` as packager so it should start listening to changes 
 
 https://linuxize.com/post/how-to-use-linux-screen/
 
+Kill screen sessions: `screen -X -S [id of screen session to kill] quit`
