@@ -15,9 +15,8 @@ app.post('/', (req, res) => {
 
 app.get('/file', (req, res) => {
   fileHandler.readFile('response.json').then(response => {
-    var parsedResponse = JSON.parse(response);
-    fileHandler.writeFile(parsedResponse).then(response => {
-      res.send(parsedResponse);
+    fileHandler.writeFile(response).then(response => {
+      res.send(response);
     })
     .catch(err => {
       res.status('500').send(err);
