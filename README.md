@@ -1,7 +1,7 @@
 ## Overview
 Project contains:
 - A simple Node API
-- Client (React, Ant Design UI library, React-Router, Parcel Packager)
+- Client (React, Ant Design UI library, React-Router, Parcel bundler)
 
 ## Highlight
 
