@@ -1,5 +1,5 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Icon, Tabs } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon, Tabs, Col, Row, Input, Select, Card } from 'antd'
 import axios from 'axios'
 import { Route, Switch } from 'react-router-dom'
 import './style.scss'
@@ -10,12 +10,16 @@ import Codearea from '../../components/Codearea'
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
 const { TabPane } = Tabs;
+const InputGroup = Input.Group;
+const Option = Select.Option;
 
 class Dashboard extends React.Component {
 	
 	constructor(props) {
 		super(props);
 		this.state = {
+			dimensionList: [],
+			measureList: [],
 			lineChartData: {
 				dimension: [],
 				measure: [],
@@ -70,7 +74,9 @@ class Dashboard extends React.Component {
 			
 			this.setState({
 				lineChartData: tempLineChart,
-				barChartData: tempBarChart
+				barChartData: tempBarChart,
+				dimensionList: Object.keys(products[0]),
+				measureList: Object.keys(products[0])
 			})
 		})
 		.catch((error) => {
@@ -81,6 +87,22 @@ class Dashboard extends React.Component {
 		.then(() => {
 			
 		});
+	}
+	
+	dimensionItems() {
+		var array = [];
+		this.state.dimensionList.map((item) => {
+			array.push(
+				<Option value={item}>{item}</Option>
+			)												 
+		});
+		return (
+			{array}
+		)
+	}
+	
+	measureItems() {
+		
 	}
 	
   render() {
@@ -102,8 +124,39 @@ class Dashboard extends React.Component {
 							</TabPane>
 							
 							<TabPane tab="Visualize" key="2">
-								<Chartman type="lineChart" props={this.state.lineChartData} />
-								<Chartman type="barChart" props={this.state.barChartData} />
+								<Row>
+									<Col span={18}>
+										<Chartman type="lineChart" props={this.state.lineChartData} />
+										<Chartman type="barChart" props={this.state.barChartData} />
+									</Col>
+									<Col className="options-column" span={6}>
+										<Card
+											title="Data Selection"
+											style={{ width: "100%" }}
+										>
+											<p className="input-title">Dimension</p>
+											<Select title="Dimension" style={{ width: '100%' }} defaultValue="">
+												{this.state.dimensionList.map((item, index) => (
+													<Option key={index} value={item}>{item}</Option>
+												))}
+											</Select>
+											
+											<p className="input-title" style={{ marginTop: 15 }}>Measure</p>
+											<InputGroup compact>
+												<Select style={{ width: '40%' }} defaultValue="Sum">
+													<Option value="Option2-1">Sum</Option>
+													<Option value="Option2-2">Count</Option>
+												</Select>
+												<Select style={{ width: '60%' }} defaultValue="">
+													{this.state.measureList.map((item, index) => (
+														<Option key={index} value={item}>{item}</Option>
+													))}
+												</Select>
+											</InputGroup>
+										</Card>
+										
+									</Col>
+								</Row>
 							</TabPane>
 						</Tabs>
 					</div>
