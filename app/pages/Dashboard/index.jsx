@@ -6,6 +6,7 @@ import './style.scss'
 import logo from '../../assets/shopify-logo.png'
 import Chartman from '../../components/Chartman'
 import Codearea from '../../components/Codearea'
+import Visualizer from '../Visualizer'
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
@@ -15,73 +16,10 @@ class Dashboard extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		this.state = {
-			lineChartData: {
-				dimension: [],
-				measure: [],
-				dimensionLabel: '',
-				measureLabel: '',
-				aggr: 'sum'
-			},
-			barChartData: {
-				dimension: [],
-				measure: [],
-				dimensionLabel: '',
-				measureLabel: '',
-				aggr: 'sum'
-			}
-		}
+		this.state = {}
 	}
 	
-	componentDidMount() {
-		this.prepareChartData();
-	}
-	
-	prepareChartData() {
-		axios.get('http://159.203.11.15/api/products/file')
-		.then((response) => {
-			console.log(response);
-			
-			var products = response.data.ProductCollection;
-			
-			var tempLineChart = {
-				dimension: [],
-				measure: [],
-				dimensionLabel: 'Category',
-				measureLabel: 'Quantity',
-				aggr: 'sum'
-			};
-			
-			var tempBarChart = {
-				dimension: [],
-				measure: [],
-				dimensionLabel: 'Category',
-				measureLabel: 'Quantity',
-				aggr: 'sum'
-			};
-			
-			products.forEach((product) => {
-				tempLineChart.dimension.push(product.Category);
-				tempLineChart.measure.push(product.Quantity);
-				
-				tempBarChart.dimension.push(product.Category);
-				tempBarChart.measure.push(product.Quantity);
-			});
-			
-			this.setState({
-				lineChartData: tempLineChart,
-				barChartData: tempBarChart
-			})
-		})
-		.catch((error) => {
-			this.setState({
-				
-			})
-		})
-		.then(() => {
-			
-		});
-	}
+	componentDidMount() {}
 	
   render() {
     return (
@@ -102,8 +40,7 @@ class Dashboard extends React.Component {
 							</TabPane>
 							
 							<TabPane tab="Visualize" key="2">
-								<Chartman type="lineChart" props={this.state.lineChartData} />
-								<Chartman type="barChart" props={this.state.barChartData} />
+								<Visualizer />
 							</TabPane>
 						</Tabs>
 					</div>
