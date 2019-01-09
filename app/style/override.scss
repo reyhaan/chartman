@@ -21,6 +21,7 @@
 .ant-btn {
   background-color: $appBlue;
   border-color: $appBlue;
+	border-radius: 3px;
 }
 
 .ant-btn:hover,
@@ -33,6 +34,10 @@
 .ant-menu.ant-menu-dark .ant-menu-item-selected,
 .ant-menu-submenu-popup.ant-menu-dark .ant-menu-item-selected {
   background-color: transparent;
+}
+
+.ant-tabs-bar {
+	margin:0 0 10px 0;
 }
 
 .ant-tabs-content {

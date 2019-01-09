@@ -1,11 +1,13 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb, Icon, Tabs, Col, Row, Input, Select, Card } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon, Tabs, Col, Row, Button, Input, Select, Card } from 'antd'
 import axios from 'axios'
 import { Route, Switch } from 'react-router-dom'
 import './style.scss'
 import logo from '../../assets/shopify-logo.png'
 import Chartman from '../../components/Chartman'
 import Codearea from '../../components/Codearea'
+import { productsStore } from '../../stores'
+import { observer } from 'mobx-react'
 
 const { SubMenu } = Menu;
 const { Header, Content, Footer } = Layout;
@@ -13,10 +15,12 @@ const { TabPane } = Tabs;
 const InputGroup = Input.Group;
 const Option = Select.Option;
 
+@observer
 class Dashboard extends React.Component {
 	
 	constructor(props) {
 		super(props);
+		console.log(productsStore)
 		this.state = {
 			dimensionList: [],
 			measureList: [],
