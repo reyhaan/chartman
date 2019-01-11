@@ -106,7 +106,15 @@ class Dashboard extends React.Component {
 	}
 	
 	measureItems() {
-		
+		var array = [];
+		this.state.dimensionList.map((item) => {
+			array.push(
+				<Option value={item}>{item}</Option>
+			)												 
+		});
+		return (
+			{array}
+		)
 	}
 	
   render() {

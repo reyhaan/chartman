@@ -13,11 +13,11 @@ import 'nvd3/build/nv.d3.css'
 class Index extends React.Component {
   render() {
     return (
-				<Router>
-			<Provider stores={stores}>
+			<Router>
+				<Provider stores={stores}>
 					<App />
-			</Provider>
-				</Router>
+				</Provider>
+			</Router>
     )
   }
 }
