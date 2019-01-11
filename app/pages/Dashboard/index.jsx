@@ -20,7 +20,6 @@ class Dashboard extends React.Component {
 	
 	constructor(props) {
 		super(props);
-		console.log(productsStore)
 		this.state = {
 			dimensionList: [],
 			measureList: [],

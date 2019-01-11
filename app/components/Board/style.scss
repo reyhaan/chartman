@@ -1,0 +1,14 @@
+.board-container {
+    background-color: #ccc;
+    height: 326px;
+    width: 380px;
+    border: 1px solid #ccc;
+    .cell {
+        height: 50px;
+        width: 50px;
+        float: left;
+        background-color: #fff;
+        margin: 2px;
+        border-radius: 25px;
+    }
+}
