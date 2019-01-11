@@ -10,5 +10,13 @@
         background-color: #fff;
         margin: 2px;
         border-radius: 25px;
+
+        &.red {
+            background-color: red;
+        }
+
+        &.black {
+            background-color: black;
+        }
     }
 }

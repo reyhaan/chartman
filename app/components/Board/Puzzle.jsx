@@ -17,6 +17,7 @@ class Puzzle {
     }
 
     getBoard = () => {
+        this.init();
         return this.board;
     }
 }

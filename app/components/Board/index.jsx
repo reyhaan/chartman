@@ -7,20 +7,12 @@ class Board extends React.Component {
 	constructor(props) {
     super(props);
     this.state = {
-      board: [],
+      board: Puzzle.getBoard(),
       player: 1
     }
 	}
 	
-  componentDidMount() {
-    Puzzle.init()
-    this.setState((prev) => {
-      return {
-        ...prev,
-        board: Puzzle.getBoard()
-      }
-    });
-  }
+  componentDidMount() {}
 
   checkWinner = (row, col) => {
 
@@ -123,11 +115,12 @@ class Board extends React.Component {
   }
   
   renderCells = () => {
+    var _this = this;
     var cells = [];
     for(var i = 0; i < 6; i++) {
       for(var j = 0; j < 7; j++) {
         var id = `${i}${j}`;
-        cells.push(<div key={id} id={id} className="cell" onClick={(event) => this.makeMove(event)} onMouseOver={(event) => this.highlightCell(event)}></div>);
+        cells.push(<div key={id} id={id} className={`cell ${_this.state.board[i][j] === 1 ? 'red' : ''} ${_this.state.board[i][j] === 2 ? 'black' : ''}`} onClick={(event) => this.makeMove(event)} onMouseOver={(event) => this.highlightCell(event)}></div>);
       }
     }
     return cells;
