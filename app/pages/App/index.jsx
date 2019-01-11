@@ -11,9 +11,8 @@ class App extends React.Component {
     return (
 			<Content className="content">
 				<Switch>
-					<Route exact path="/" component={Task} />
+					<Route exact path="/" component={Dashboard} />
 					<Route path="/dashboard" component={Dashboard} />
-					<Route path="/task" component={Task} />
 				</Switch>
 			</Content>
     )
